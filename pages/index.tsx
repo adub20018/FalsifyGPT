@@ -26,6 +26,7 @@ export default function Home() {
         );
       }
 
+      // stores each message and response to display chat history
       setChatHistory((prevChatHistory) => [
         ...prevChatHistory,
         { userMessage: userInput, botMessage: data.result },

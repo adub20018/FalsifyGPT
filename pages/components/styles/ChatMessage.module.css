@@ -1,10 +1,10 @@
-.right {
+.user {
   display: flex;
   justify-content: flex-end;
   text-align: right;
   margin-right: 4px;
 }
-.left {
+.bot {
   display: flex;
   justify-content: flex-start;
   margin-left: 4px;

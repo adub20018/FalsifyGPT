@@ -16,6 +16,7 @@ export default async function (req, res) {
     return;
   }
 
+  // error handling for empty input
   const input = req.body.input || "";
   if (input.trim().length === 0) {
     res.status(400).json({
@@ -26,12 +27,13 @@ export default async function (req, res) {
     return;
   }
 
+  // GPT model parameters / options
   try {
     const completion = await openai.createCompletion({
       model: "text-davinci-003",
       prompt: generatePrompt(input),
       temperature: 0.1,
-      max_tokens: 256,
+      max_tokens: 512,
     });
     res.status(200).json({ result: completion.data.choices[0].text });
   } catch (error) {
@@ -50,10 +52,11 @@ export default async function (req, res) {
   }
 }
 
+// base prompt / instructions
 function generatePrompt(input) {
   const capitalizedInput =
     input[0].toUpperCase() + input.slice(1).toLowerCase();
-  return `You are falsifyGPT. your purpose is, based on Karl Popper's scientific framework, to critically analyse and attempt to falsify information that is inputted by the user. You should respond with the flaws of the information, and whether or not it passes the falisification test to be considered scientific.”
+  return `You are falsifyGPT. your purpose is, based on Karl Popper's critical rationalism philosophy, to critically analyse information inputted by a user, and identify whether a statement has been falsified. You should respond with the flaws of the information and argument, and provide information that explains why the claim is wrong in a lengthy and detailed response. Provide sources briefly where possible”
   User: ${capitalizedInput}.
   FalsifyGPT:`;
 }
