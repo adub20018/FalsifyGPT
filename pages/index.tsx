@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { useState } from "react";
-import styles from "./index.module.css";
+import styles from "./styles/index.module.css";
 import ChatMessage from "./components/ChatMessage";
 
 export default function Home() {
