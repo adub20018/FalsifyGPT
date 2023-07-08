@@ -1,0 +1,8 @@
+html {
+  background-color: white;
+  background: linear-gradient(
+    0deg,
+    hsla(229, 17%, 81%, 1) 0%,
+    hsla(0, 0%, 100%, 1) 15%
+  );
+}
