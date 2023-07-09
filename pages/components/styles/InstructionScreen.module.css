@@ -1,0 +1,8 @@
+.instructionContainer {
+  text-align: center;
+  height: 100px;
+  margin-top: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

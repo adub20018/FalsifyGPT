@@ -2,10 +2,12 @@ import Head from "next/head";
 import { useState } from "react";
 import styles from "./styles/index.module.css";
 import ChatMessage from "./components/ChatMessage";
+import InstructionScreen from "./components/InstructionScreen";
 
 export default function Home() {
   const [userInput, setUserInput] = useState("");
   const [chatHistory, setChatHistory] = useState([]);
+  const [conversationStarted, setConversationStarted] = useState(false);
 
   async function onSubmit(event) {
     event.preventDefault();
@@ -32,6 +34,7 @@ export default function Home() {
         { userMessage: userInput, botMessage: data.result },
       ]);
       setUserInput("");
+      setConversationStarted(true);
     } catch (error) {
       // Consider implementing your own error handling logic here
       console.error(error);
@@ -47,9 +50,16 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1>FalsifyGPT</h1>
-        <h3>Enter some information to be critically analysed</h3>
         <div className={styles.content}>
+          {!conversationStarted && (
+            <InstructionScreen
+              text1="FalsifyGPT"
+              text2="Enter some information to be critically analysed"
+            />
+          )}
+
+          {/* <h1>FalsifyGPT</h1>
+        <h3>Enter some information to be critically analysed</h3> */}
           {chatHistory.map((message, index) => (
             <div>
               <ChatMessage
@@ -64,17 +74,20 @@ export default function Home() {
               />
             </div>
           ))}
+          <form onSubmit={onSubmit}>
+            <input
+              type="text"
+              name="input"
+              placeholder="Enter some information"
+              value={userInput}
+              onChange={(e) => setUserInput(e.target.value)}
+            />
+            <input type="submit" value="Submit" />
+          </form>
         </div>
-        <form onSubmit={onSubmit}>
-          <input
-            type="text"
-            name="input"
-            placeholder="Enter some information"
-            value={userInput}
-            onChange={(e) => setUserInput(e.target.value)}
-          />
-          <input type="submit" value="Submit" />
-        </form>
+        <div className={styles.sidebar}>
+          <h2>FalsifyGPT</h2>
+        </div>
       </main>
     </div>
   );

@@ -22,10 +22,25 @@
 }
 .main {
   display: flex;
+  flex-direction: row-reverse;
+  overflow-y: auto;
+  justify-content: space-between;
+}
+
+.content {
+  height: 95vh;
+  width: 80vw;
+  /* border: 1px solid #03588c; */
+  display: flex;
   flex-direction: column;
-  align-items: center;
-  padding-top: 60px;
-  height: 91.7vh;
+  justify-content: space-between;
+}
+
+.sidebar {
+  /* background-color: #03588c; */
+  height: 98vh;
+  width: 20vw;
+  border-right: 1px solid #03588c;
 }
 
 .main h1 {
@@ -35,28 +50,22 @@
 
 .main h3 {
   font-size: 22px;
-  color: ;
-}
-
-.content {
-  height: 50rem;
-  width: 95vw;
-  border: 1px solid #03588c;
-  border-radius: 4px 4px 0 0;
-  overflow-y: auto;
 }
 
 .main form {
   display: flex;
   flex-direction: row;
   width: auto;
+  justify-content: center;
+  margin-bottom: 40px;
 }
 .main input[type="text"] {
   padding: 12px 16px;
   border: 1px solid #03588c;
-  border-radius: 0 0 0 4px;
-  margin-bottom: 24px;
-  width: 85vw;
+  border-radius: 4px 0 0 4px;
+  width: 50vw;
+  max-width: 500px;
+  outline: none;
 }
 .main ::placeholder {
   color: #8e8ea0;
@@ -66,9 +75,9 @@
   color: #fff;
   background-color: #03588c;
   border: none;
-  border-radius: 0 0 4px 0;
+  border-radius: 0 4px 4px 0;
   text-align: center;
   cursor: pointer;
-  width: 7.5vw;
+  width: 80px;
   height: 50px;
 }
